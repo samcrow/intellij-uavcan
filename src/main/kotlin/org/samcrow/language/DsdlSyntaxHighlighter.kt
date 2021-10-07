@@ -15,13 +15,13 @@ class DsdlSyntaxHighlighter : SyntaxHighlighterBase() {
 
     companion object {
         val SEPARATOR: TextAttributesKey =
-            createTextAttributesKey("SIMPLE_SEPARATOR", DefaultLanguageHighlighterColors.OPERATION_SIGN)
-        val KEY: TextAttributesKey = createTextAttributesKey("SIMPLE_KEY", DefaultLanguageHighlighterColors.KEYWORD)
-        val VALUE: TextAttributesKey = createTextAttributesKey("SIMPLE_VALUE", DefaultLanguageHighlighterColors.STRING)
+            createTextAttributesKey("DSDL_SEPARATOR", DefaultLanguageHighlighterColors.OPERATION_SIGN)
+        val KEY: TextAttributesKey = createTextAttributesKey("DSDL_KEY", DefaultLanguageHighlighterColors.KEYWORD)
+        val VALUE: TextAttributesKey = createTextAttributesKey("DSDL_VALUE", DefaultLanguageHighlighterColors.STRING)
         val COMMENT: TextAttributesKey =
-            createTextAttributesKey("SIMPLE_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT)
+            createTextAttributesKey("DSDL_COMMENT", DefaultLanguageHighlighterColors.LINE_COMMENT)
         val BAD_CHARACTER: TextAttributesKey =
-            createTextAttributesKey("SIMPLE_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER)
+            createTextAttributesKey("DSDL_BAD_CHARACTER", HighlighterColors.BAD_CHARACTER)
 
 
         private val BAD_CHAR_KEYS = arrayOf(BAD_CHARACTER)
@@ -31,6 +31,12 @@ class DsdlSyntaxHighlighter : SyntaxHighlighterBase() {
         private val COMMENT_KEYS = arrayOf(COMMENT)
         private val EMPTY_KEYS = arrayOfNulls<TextAttributesKey>(0)
 
+        // DSDL
+        private val DIRECTIVE_KEYS =
+            arrayOf(createTextAttributesKey("DSDL_DIRECTIVE", DefaultLanguageHighlighterColors.METADATA))
+        private val STRING_KEYS = arrayOf(createTextAttributesKey("DSDL_STRING_LITERAL", DefaultLanguageHighlighterColors.STRING))
+        private val BOOL_KEYS = arrayOf(createTextAttributesKey("DSDL_BOOL_LITERAL", DefaultLanguageHighlighterColors.PREDEFINED_SYMBOL))
+
     }
 
     override fun getHighlightingLexer(): Lexer {
@@ -38,18 +44,13 @@ class DsdlSyntaxHighlighter : SyntaxHighlighterBase() {
     }
 
     override fun getTokenHighlights(tokenType: IElementType): Array<out TextAttributesKey?> {
-        return if (tokenType == DsdlTypes.SEPARATOR) {
-            SEPARATOR_KEYS
-        } else if (tokenType == DsdlTypes.KEY) {
-            KEY_KEYS
-        } else if (tokenType == DsdlTypes.VALUE) {
-            VALUE_KEYS
-        } else if (tokenType == DsdlTypes.COMMENT) {
-            COMMENT_KEYS
-        } else if (tokenType == TokenType.BAD_CHARACTER) {
-            BAD_CHAR_KEYS
-        } else {
-            EMPTY_KEYS
+        return when (tokenType) {
+            DsdlTypes.DSDL_DIRECTIVE -> DIRECTIVE_KEYS
+            DsdlTypes.LITERAL_STRING -> STRING_KEYS
+            DsdlTypes.LITERAL_BOOL -> BOOL_KEYS
+            DsdlTypes.COMMENT -> COMMENT_KEYS
+            TokenType.BAD_CHARACTER -> BAD_CHAR_KEYS
+            else -> EMPTY_KEYS
         }
     }
 }

@@ -1,5 +1,7 @@
 # IntelliJ Platform Plugin Template
 
+Test edit
+
 [![official JetBrains project](https://jb.gg/badges/official.svg)][jb:confluence-on-gh]
 [![Twitter Follow](https://img.shields.io/twitter/follow/JBPlatform?style=flat)][jb:twitter]
 [![Build](https://github.com/JetBrains/intellij-platform-plugin-template/workflows/Build/badge.svg)][gh:build]

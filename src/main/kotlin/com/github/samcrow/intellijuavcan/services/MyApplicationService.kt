@@ -1,6 +1,6 @@
-package org.jetbrains.plugins.template.services
+package com.github.samcrow.intellijuavcan.services
 
-import org.jetbrains.plugins.template.MyBundle
+import com.github.samcrow.intellijuavcan.MyBundle
 
 class MyApplicationService {
 

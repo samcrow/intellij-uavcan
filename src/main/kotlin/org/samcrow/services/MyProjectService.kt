@@ -1,7 +1,7 @@
-package com.github.samcrow.intellijuavcan.services
+package org.samcrow.services
 
 import com.intellij.openapi.project.Project
-import com.github.samcrow.intellijuavcan.MyBundle
+import org.samcrow.MyBundle
 
 class MyProjectService(project: Project) {
 

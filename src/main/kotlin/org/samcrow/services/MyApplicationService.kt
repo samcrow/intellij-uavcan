@@ -1,6 +1,6 @@
-package com.github.samcrow.intellijuavcan.services
+package org.samcrow.services
 
-import com.github.samcrow.intellijuavcan.MyBundle
+import org.samcrow.MyBundle
 
 class MyApplicationService {
 

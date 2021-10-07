@@ -1,0 +1,20 @@
+{
+  parserClass="org.samcrow.language.parser.DsdlParser"
+
+  extends="com.intellij.extapi.psi.ASTWrapperPsiElement"
+
+  psiClassPrefix="Dsdl"
+  psiImplClassSuffix="Impl"
+  psiPackage="org.samcrow.language.psi"
+  psiImplPackage="org.samcrow.language.psi.impl"
+
+  elementTypeHolderClass="org.samcrow.language.psi.DsdlTypes"
+  elementTypeClass="org.samcrow.language.psi.DsdlElementType"
+  tokenTypeClass="org.samcrow.language.psi.DsdlTokenType"
+}
+
+simpleFile ::= item_*
+
+private item_ ::= (property|COMMENT|CRLF)
+
+property ::= (KEY? SEPARATOR VALUE?) | KEY

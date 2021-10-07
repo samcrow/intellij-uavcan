@@ -1,9 +1,9 @@
-package com.github.samcrow.intellijuavcan.listeners
+package org.samcrow.listeners
 
 import com.intellij.openapi.components.service
 import com.intellij.openapi.project.Project
 import com.intellij.openapi.project.ProjectManagerListener
-import com.github.samcrow.intellijuavcan.services.MyProjectService
+import org.samcrow.services.MyProjectService
 
 internal class MyProjectManagerListener : ProjectManagerListener {
 

@@ -1,4 +1,4 @@
-package com.github.samcrow.intellijuavcan
+package org.samcrow
 
 import com.intellij.DynamicBundle
 import org.jetbrains.annotations.NonNls
